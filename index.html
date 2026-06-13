@@ -3,15 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CinemaTV - Nonton Info Film Terbaru</title>
+ 
+  <title>Konten Eksklusif</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      flex-direction: column;
+    }
+    #countdown {
+      font-size: 80px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    #playBtn {
+      display: none;
+      padding: 15px 40px;
+      font-size: 20px;
+      background: #ff0050;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #playBtn:active {
+      transform: scale(0.95);
+    }
+    video {
+      width: 90%;
+      max-width: 500px;
+      display: none;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Selamat Datang di CinemaTV.my.id</h1>
-  <p>Website ini berisi informasi seputar film terbaru, review, dan trailer. Kami update setiap hari untuk kamu pecinta film.</p>
-  <h2>Film Populer Minggu Ini</h2>
-  <p>1. Film Action Terbaru 2026 - Rating 8.5/10. Film ini menceritakan tentang...</p>
-  <p>2. Film Drama Korea - Kisah cinta yang bikin baper...</p>
-  <img src="https://via.placeholder.com/600x300" alt="Poster Film">
-  <p>Bookmark halaman ini untuk update selanjutnya!</p>
+  <h2>Video akan segera dimulai</h2>
+  <div id="countdown">2</div>
+  <button id="playBtn" onclick="mulaiVideo()">NONTON SEKARANG</button>
+  
+  <!-- PAKE VIDEO02.MP4 DARI GITHUB LU -->
+  <video id="video" src="video02.mp4" controls></video>
+
+<script>
+const LINK_MONETAG = "https://google.com"; // Buat test doang
+
+let c = 2;
+const cd = document.getElementById('countdown');
+const int = setInterval(() => {
+  c--;
+  cd.textContent = c;
+  if (c === 0) {
+    clearInterval(int);
+    cd.style.display = 'none';
+    document.getElementById('playBtn').style.display = 'inline-block';
+  }
+}, 1000);
+
+function mulaiVideo() {
+  const vid = document.getElementById('video');
+  vid.style.display = 'block';
+  vid.play();
+  window.open(LINK_MONETAG, '_blank');
+  document.getElementById('playBtn').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
